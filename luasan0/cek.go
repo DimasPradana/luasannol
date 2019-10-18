@@ -4,8 +4,9 @@ import (
 	"database/sql"
 	"flag"
 	"fmt"
-	_ "gopkg.in/goracle.v2"
 	"log"
+
+	_ "gopkg.in/goracle.v2"
 )
 
 //type getsppt struct {
@@ -196,8 +197,8 @@ func insertDATOPBangunan(vkec, vkel, vblok, vurut, vnbng, vform, vlbng string) {
 		"KD_BLOK, NO_URUT, KD_JNS_OP, NO_BNG, KD_JPB, NO_FORMULIR_LSPOP, THN_DIBANGUN_BNG, " +
 		"THN_RENOVASI_BNG, LUAS_BNG, JML_LANTAI_BNG, KONDISI_BNG, JNS_KONSTRUKSI_BNG, JNS_ATAP_BNG, KD_DINDING," +
 		"KD_LANTAI, KD_LANGIT_LANGIT, NILAI_SISTEM_BNG, JNS_TRANSAKSI_BNG, TGL_PENDATAAN_BNG, NIP_PENDATA_BNG," +
-		" TGL_PEMERIKSAAN_BNG, NIP_PEMERIKSA_BNG, TGL_PEREKAMAN_BNG, NIP_PEREKAM_BNG) VALUES ('35', '12', '"+ vkec +"', " +
-		"'"+vkel+"', '"+vblok+"', '"+vurut+"', '9', "+vnbng+", '01', '"+vform+"', '2000', null, "+vlbng+", " +
+		" TGL_PEMERIKSAAN_BNG, NIP_PEMERIKSA_BNG, TGL_PEREKAMAN_BNG, NIP_PEREKAM_BNG) VALUES ('35', '12', '" + vkec + "', " +
+		"'" + vkel + "', '" + vblok + "', '" + vurut + "', '9', " + vnbng + ", '01', '" + vform + "', '2000', null, " + vlbng + ", " +
 		"1, '2', '3', '3', '3', '2', '2', 0, '1', SYSDATE, " +
 		"'196408142', SYSDATE, '197505192', SYSDATE, '060000000')")
 	if err != nil {
@@ -209,7 +210,7 @@ func insertDATOPBangunan(vkec, vkel, vblok, vurut, vnbng, vform, vlbng string) {
 	fmt.Println(&rows)
 	fmt.Println("masuk insertDatOpBangunan")
 }
-func insertDATFasilitasBangunan(vkec, vkel, vblok, vurut, vnbng, vdayalistrik  string) {
+func insertDATFasilitasBangunan(vkec, vkel, vblok, vurut, vnbng, vdayalistrik string) {
 	/*
 		INSERT INTO PBB.DAT_FASILITAS_BANGUNAN (KD_PROPINSI, KD_DATI2, KD_KECAMATAN, KD_KELURAHAN, KD_BLOK, NO_URUT, KD_JNS_OP,
 		                                        NO_BNG, KD_FASILITAS, JML_SATUAN)
@@ -224,7 +225,7 @@ func insertDATFasilitasBangunan(vkec, vkel, vblok, vurut, vnbng, vdayalistrik  s
 	defer db.Close()
 	rows, err := db.Exec("INSERT INTO PBB.DAT_FASILITAS_BANGUNAN (KD_PROPINSI, KD_DATI2, KD_KECAMATAN," +
 		"KD_KELURAHAN, KD_BLOK, NO_URUT, KD_JNS_OP, NO_BNG, KD_FASILITAS, JML_SATUAN) VALUES ('35', '12', " +
-		"'"+vkec+"', '"+vkel+"', '"+vblok+"', '"+vurut+"', '9', "+vnbng+", '44', "+vdayalistrik+")")
+		"'" + vkec + "', '" + vkel + "', '" + vblok + "', '" + vurut + "', '9', " + vnbng + ", '44', " + vdayalistrik + ")")
 	if err != nil {
 		fmt.Println("Error running query")
 		fmt.Printf("%v\n", rows)
@@ -234,7 +235,7 @@ func insertDATFasilitasBangunan(vkec, vkel, vblok, vurut, vnbng, vdayalistrik  s
 	fmt.Println(&rows)
 	fmt.Println("masuk insertDatFasBangunan")
 }
-func insertDATOPBumi(vkec, vkel, vblok, vurut, vkdznt, vlbumi, vjnstnh  string) {
+func insertDATOPBumi(vkec, vkel, vblok, vurut, vkdznt, vlbumi, vjnstnh string) {
 	/*
 		INSERT INTO PBB.DAT_OP_BUMI (KD_PROPINSI, KD_DATI2, KD_KECAMATAN, KD_KELURAHAN, KD_BLOK, NO_URUT, KD_JNS_OP, NO_BUMI,KD_ZNT, LUAS_BUMI, JNS_BUMI, NILAI_SISTEM_BUMI)
 		                VALUES ('35', '12', '$(kec)', '$(kel)', '$(blok)', '$(urut)', '9', 1,'$(kd_znt)', $(luas_bumi), $(jenis_tanah), 0);
@@ -248,7 +249,7 @@ func insertDATOPBumi(vkec, vkel, vblok, vurut, vkdznt, vlbumi, vjnstnh  string) 
 	defer db.Close()
 	rows, err := db.Exec("INSERT INTO PBB.DAT_OP_BUMI (KD_PROPINSI, KD_DATI2, KD_KECAMATAN, KD_KELURAHAN," +
 		" KD_BLOK, NO_URUT, KD_JNS_OP, NO_BUMI,KD_ZNT, LUAS_BUMI, JNS_BUMI, NILAI_SISTEM_BUMI) VALUES ('35', '12', " +
-		"'"+vkec+"', '"+vkel+"', '"+vblok+"', '"+vurut+"', '9', 1,'"+vkdznt+"', "+vlbumi+","+vjnstnh+" , 0)")
+		"'" + vkec + "', '" + vkel + "', '" + vblok + "', '" + vurut + "', '9', 1,'" + vkdznt + "', " + vlbumi + "," + vjnstnh + " , 0)")
 	if err != nil {
 		fmt.Println("Error running query")
 		fmt.Printf("%v\n", rows)
@@ -278,16 +279,16 @@ func updateDATObjekPajak(vform, vlbumi, vlbng, vkec, vkel, vblok, vurut string) 
 		return
 	}
 	defer db.Close()
-	rows, err := db.Exec("UPDATE PBB.DAT_OBJEK_PAJAK SET NO_FORMULIR_SPOP = '"+vform+"', " +
+	rows, err := db.Exec("UPDATE PBB.DAT_OBJEK_PAJAK SET NO_FORMULIR_SPOP = '" + vform + "', " +
 		"NO_PERSIL = null, BLOK_KAV_NO_OP = null, RW_OP = '00', RT_OP = '000', KD_STATUS_CABANG = '0', " +
-		"KD_STATUS_WP = '1', TOTAL_LUAS_BUMI = "+vlbumi+", TOTAL_LUAS_BNG = "+vlbng+", " +
+		"KD_STATUS_WP = '1', TOTAL_LUAS_BUMI = " + vlbumi + ", TOTAL_LUAS_BNG = " + vlbng + ", " +
 		"NJOP_BUMI = 0, NJOP_BNG = 0, STATUS_PETA_OP = '1', JNS_TRANSAKSI_OP = '2', " +
 		//"TGL_PENDATAAN_OP = TO_DATE(CURRENT_DATE, 'DD-MM-YYYY HH24:MI:SS'),	NIP_PENDATA = '196408142', " +
 		"TGL_PENDATAAN_OP = SYSDATE, NIP_PENDATA = '196408142', " +
 		"TGL_PEMERIKSAAN_OP = SYSDATE, NIP_PEMERIKSA_OP = '197505192', " +
 		"TGL_PEREKAMAN_OP = SYSDATE, NIP_PEREKAM_OP = '060000000' " +
-		"WHERE KD_PROPINSI = '35' AND KD_DATI2 = '12' AND KD_KECAMATAN = '"+vkec+"' AND KD_KELURAHAN = '"+vkel+"' " +
-		"AND KD_BLOK = '"+vblok+"' AND NO_URUT = '"+vurut+"' AND KD_JNS_OP = '9'")
+		"WHERE KD_PROPINSI = '35' AND KD_DATI2 = '12' AND KD_KECAMATAN = '" + vkec + "' AND KD_KELURAHAN = '" + vkel + "' " +
+		"AND KD_BLOK = '" + vblok + "' AND NO_URUT = '" + vurut + "' AND KD_JNS_OP = '9'")
 	if err != nil {
 		fmt.Println("Error running query")
 		fmt.Printf("%v\n", rows)
